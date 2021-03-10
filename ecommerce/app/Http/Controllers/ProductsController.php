@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class ProductsController extends Controller
 {
   public function index() {
-    return view('product.index');
+    return view('product.index')->with('Products', Product::all());
   }
 
   public function create() {
@@ -15,6 +17,7 @@ class ProductsController extends Controller
   }
 
   public function store(Request $request) {
-    dd($request->all());
+    Product::create($request->all());
+    return redirect(Route('product.index'));
   }
 }
