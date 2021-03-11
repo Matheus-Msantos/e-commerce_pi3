@@ -5,6 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script>
+    function remove(route) {
+      if(confirm('Você realmente deseja excluir esse produto?')){
+        window.location = route;
+      }
+    }
+  </script>
+
   <title>Lista de produtos</title>
 
    <!-- CSS only -->
@@ -15,8 +23,12 @@
 <body>
   <div class="container p-1">
     <h1>Lista de produtos</h1>
-    <a href="{{ Route('product.create') }}" class="btn btn-primary">Cadastrar produto</a>
 
+    @if(session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        {{ session()->get('success') }}
+      </div>
+    @endif
     <div class="row">
       <table class="table">
 
@@ -31,17 +43,17 @@
         </thead>
 
         <tbody>
-          @foreach($Products as $Product)
+          @foreach($Products as $product)
 
             <tr>
-              <td>{{ $Product->id }}</td>
-              <td>{{ $Product->name }}</td>
-              <td>{{ $Product->description }}</td>
-              <td>{{ $Product->price }}</td>
+              <td>{{ $product->id }}</td>
+              <td>{{ $product->name }}</td>
+              <td>{{ $product->description }}</td>
+              <td>{{ $product->price }}</td>
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="#" class="btn btn-warning">Editar</a>
-                <a href="#" class="btn btn-danger">Excluir</a>
+                <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
+                <a href="#" onclick="remove( '{{ Route('product.destroy', $product->id) }}' )" class="btn btn-danger">Excluir</a>
               </td>
             </tr>
 
@@ -50,6 +62,8 @@
 
       </table>
     </div>
+
+    <a href="{{ Route('product.create') }}" class="btn btn-primary">Cadastrar produto</a>
 
   </div>
 </body>
