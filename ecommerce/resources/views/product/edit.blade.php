@@ -15,8 +15,8 @@
     <h1>Editar produtos</h1>
 
     <form method="POST" action="{{ Route('product.update', $Product->id) }}">
-      @method('PATCH')
       @csrf
+      @method('PATCH')
       <div class="row">
         <span class="form-label">Nome</span>
         <input type="text" class="form-control" name="name" value="{{ $Product->name }}">
