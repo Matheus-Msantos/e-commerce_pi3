@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    function remove(route) {
-      if(confirm('Você realmente deseja excluir esse produto?')){
-        window.location = route;
-      }
+    function remover() {
+      confirm('Você realmente deseja excluir esse produto?');
     }
   </script>
 
@@ -53,7 +51,13 @@
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                <a href="#" onclick="remove( '{{ Route('product.destroy', $product->id) }}' )" class="btn btn-danger">Excluir</a>
+                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="remover()" class="d-inline">
+                  @method('DELETE')
+                  @csrf
+
+                  <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+
               </td>
             </tr>
 
