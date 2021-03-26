@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    function remove() {
-      confirm('Você realmente deseja excluir essa categoria?')
+    function remove(route) {
+      if(confirm('Você realmente deseja excluir essa Tag?')){
+        window.location = route;
+      }
     }
   </script>
 
-  <title>Lista de categorias</title>
+  <title>Lista de tags</title>
 
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -20,7 +22,7 @@
 </head>
 <body>
   <div class="container p-1">
-    <h1>Lista de categorias</h1>
+    <h1>Lista de tags</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -41,14 +43,14 @@
 
         <tbody>
 
-          @foreach($Categories as $category)
+          @foreach($Tags as $tag)
             <tr>
-              <td>{{ $category->id }}</td>
-              <td>{{ $category->name }}</td>
+              <td>{{ $tag->id }}</td>
+              <td>{{ $tag->name }}</td>
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="{{ Route('category.edit', $category->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{Route('category.destroy', $category->id)}}" method="POST" onsubmit="remove()" class="d-inline">
+                <a href="{{ Route('tag.edit', $tag->id) }}" class="btn btn-warning">Editar</a>
+                <form action="{{ Route('tag.destroy', $tag->id) }}" method="POST" onsubmit="remove()" class="d-inline">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Excluir</button>
@@ -61,7 +63,7 @@
       </table>
     </div>
 
-    <a href="{{ Route('category.create') }}" class="btn btn-primary">Cadastrar categoria</a>
+    <a href="{{ Route('tag.create') }}" class="btn btn-primary">Cadastrar Tag</a>
 
   </div>
 </body>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Categoria</title>
+  <title>Cadastrar Tag</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
@@ -12,18 +12,17 @@
 </head>
 <body>
   <div class="container">
-    <h1>Editar Categoria</h1>
+    <h1>Cadastrar Tag</h1>
 
-    <form method="POST" action="{{ Route('category.update', $Category->id )}}">
+    <form method="POST" action="{{ Route('tag.store') }}">
       @csrf
-      @method('PATCH')
       <div class="row">
         <span class="form-label">Nome</span>
-        <input type="text" class="form-control" name="name" value="{{ $Category->name }}">
+        <input type="text" class="form-control" name="name">
       </div>
 
       <div class="row mt-4">
-        <button type="submit" class="bnt btn-success btn-lg">Atualizar</button>
+        <button type="submit" class="bnt btn-success btn-lg">Salvar</button>
       </div>
     </form>
   </div>

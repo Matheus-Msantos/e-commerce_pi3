@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
+use App\http\Controllers\TagController;
 
 require __DIR__.'/auth.php';
 
@@ -25,8 +26,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-//Product, category
+//Product, category and tags
 Route::resource('/product', ProductsController::class);
 Route::resource('/category', CategoriesController::class);
+Route::resource('/tag', TagController::class);
 
 
