@@ -5,20 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    function remove(route) {
-      if(confirm('Você realmente deseja excluir essa Tag?')){
-        window.location = route;
-      }
-    }
-  </script>
-
   <title>Lista de tags</title>
 
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  <script>
+    function remover() {
+      return confirm('Você realmente deseja excluir essa Tag?');
+    }
+  </script>
+
 </head>
 <body>
   @include('layouts.menu')
@@ -32,8 +31,7 @@
     @endif
 
     <div class="row">
-      <table class="table">
-
+      <table class="table table-striped">
         <thead>
           <tr>
             <td>Id</td>
@@ -43,7 +41,6 @@
         </thead>
 
         <tbody>
-
           @foreach($Tags as $tag)
             <tr>
               <td>{{ $tag->id }}</td>
@@ -51,16 +48,15 @@
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('tag.edit', $tag->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ Route('tag.destroy', $tag->id) }}" method="POST" onsubmit="remove()" class="d-inline">
-                  @csrf
+                <form action="{{ Route('tag.destroy', $tag->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
                   @method('DELETE')
+                  @csrf
                   <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
               </td>
             </tr>
           @endforeach
         </tbody>
-
       </table>
     </div>
 

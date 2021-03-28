@@ -32,6 +32,15 @@
         <input type="number" min="0.00" max="1000000.00" step="0.01" class="form-control" name="price">
       </div>
 
+      <div class="row">
+        <span class="form-label">categoria</span>
+        <select class="form-select" name="category_id">
+          @foreach($Categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+          @endforeach
+        </select>
+      </div>
+
       <div class="row mt-4">
         <button type="submit" class="bnt btn-success btn-lg">Salvar</button>
       </div>

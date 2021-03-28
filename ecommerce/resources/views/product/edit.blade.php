@@ -33,6 +33,15 @@
         <input type="number" min="0.00" max="1000000.00" step="0.01" class="form-control" name="price" value="{{ $Product->price }}">
       </div>
 
+      <div class="row">
+        <span class="form-label">categoria</span>
+        <select class="form-select" name="category_id">
+          @foreach($Category as $category)
+            <option value="{{ $category->id }}" @if($category->id == $Product->category_id) selected @endif>{{ $category->name }}</option>
+          @endforeach
+        </select>
+      </div>
+
       <div class="row mt-4">
         <button type="submit" class="bnt btn-success btn-lg">Atualizar</button>
       </div>

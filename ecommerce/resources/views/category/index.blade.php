@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    function remove() {
-      confirm('Você realmente deseja excluir essa categoria?')
+    function remover() {
+      return confirm('Você realmente deseja excluir essa categoria?');
     }
   </script>
 
@@ -30,26 +30,26 @@
     @endif
 
     <div class="row">
-      <table class="table">
-
+      <table class="table table-striped">
         <thead>
           <tr>
             <td>Id</td>
             <td>Nome</td>
+            <td>Qtd</td>
             <td>Ações</td>
           </tr>
         </thead>
 
         <tbody>
-
           @foreach($Categories as $category)
             <tr>
               <td>{{ $category->id }}</td>
               <td>{{ $category->name }}</td>
+              <td>{{ $category->products->count() }}</td>
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('category.edit', $category->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{Route('category.destroy', $category->id)}}" method="POST" onsubmit="remove()" class="d-inline">
+                <form action="{{Route('category.destroy', $category->id)}}" method="POST" onsubmit="return remover()" class="d-inline">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Excluir</button>
@@ -58,7 +58,6 @@
             </tr>
           @endforeach
         </tbody>
-
       </table>
     </div>
 

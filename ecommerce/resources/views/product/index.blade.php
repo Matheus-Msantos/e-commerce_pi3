@@ -7,7 +7,7 @@
 
   <script>
     function remover() {
-      confirm('Você realmente deseja excluir esse produto?');
+      return confirm('Você realmente deseja excluir esse produto?');
     }
   </script>
 
@@ -29,42 +29,38 @@
       </div>
     @endif
     <div class="row">
-      <table class="table">
-
+      <table class="table table-striped">
         <thead>
           <tr>
             <td>Id</td>
             <td>Nome</td>
             <td>Descrição</td>
             <td>Preço</td>
+            <td>Categoria</td>
             <td>Ações</td>
           </tr>
         </thead>
 
         <tbody>
           @foreach($Products as $product)
-
             <tr>
               <td>{{ $product->id }}</td>
               <td>{{ $product->name }}</td>
               <td>{{ $product->description }}</td>
               <td>{{ $product->price }}</td>
+              <td>{{ $product->category->name }}</td>
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="remover()" class="d-inline">
+                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
                   @method('DELETE')
                   @csrf
-
                   <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
-
               </td>
             </tr>
-
           @endforeach
         </tbody>
-
       </table>
     </div>
 
