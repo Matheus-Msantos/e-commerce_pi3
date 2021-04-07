@@ -3,7 +3,10 @@
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="{{ Route('product.index') }}">Products</a></li>
       <li class="nav-item"><a class="nav-link" href="{{ Route('category.index') }}">Categories</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ Route('tag.index') }}">Tags</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ Route('tag.index') }}">Tags</a></li> _
+      <li class="nav-item"><a class="nav-link" href="{{ Route('product.trash') }}">Product trash</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ Route('category.trash') }}">Category trash</a></li>
+
     </ul>
   </nav>
 </header>

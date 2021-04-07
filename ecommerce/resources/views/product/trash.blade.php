@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <script>
-    function remover() {
-      return confirm('Você realmente deseja excluir esse produto?');
+    function restore() {
+      return confirm('Você realmente deseja restaurar esse produto?');
     }
   </script>
 
-  <title>Lista de produtos</title>
+  <title>Lixeira de produtos</title>
 
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -21,7 +21,7 @@
 <body>
   @include('layouts.menu')
   <main class="container pt-1">
-    <h1>Lista de produtos</h1>
+    <h1>Lixeira de produtos</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -52,12 +52,10 @@
               <td>{{ $product->price }}</td>
               <td>{{ $product->category->name }}</td>
               <td>
-                <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
-                  @method('DELETE')
+                <form action="{{ Route('product.restore', $product->id) }}" method="POST" onsubmit="return restore()" class="d-inline">
+                  @method('PATCH')
                   @csrf
-                  <button type="submit" class="btn btn-danger">Excluir</button>
+                  <button type="submit" class="btn btn-success">Resturar</button>
                 </form>
               </td>
             </tr>
@@ -65,8 +63,6 @@
         </tbody>
       </table>
     </div>
-
-    <a href="{{ Route('product.create') }}" class="btn btn-primary">Cadastrar produto</a>
 
   </main>
 </body>

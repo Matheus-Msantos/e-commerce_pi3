@@ -15,7 +15,7 @@
   <main class="container">
     <h1>Editar produtos</h1>
 
-    <form method="POST" action="{{ Route('product.update', $Product->id) }}">
+    <form method="POST" action="{{ Route('product.update', $Product->id) }}" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
       <div class="row">
@@ -40,6 +40,11 @@
             <option value="{{ $category->id }}" @if($category->id == $Product->category_id) selected @endif>{{ $category->name }}</option>
           @endforeach
         </select>
+      </div>
+
+      <div class="row">
+        <span class="form-label">Imagem</span>
+        <input type="file" class="form-control" name="image">
       </div>
 
       <div class="row mt-4">

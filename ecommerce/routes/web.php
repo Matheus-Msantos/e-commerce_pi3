@@ -28,7 +28,13 @@ Route::get('/dashboard', function () {
 
 //Product, category and tags
 Route::resource('/product', ProductsController::class);
+Route::get('trash/product', [ProductsController::class, 'trash'])->name('product.trash');
+Route::patch('restore/product/{id}', [ProductsController::class, 'restore'])->name('product.restore');
+
 Route::resource('/category', CategoriesController::class);
+Route::get('trash/category', [CategoriesController::class, 'trash'])->name('category.trash');
+Route::patch('restore/category/{id}', [categoriesController::class, 'restore'])->name('category.restore');
+
 Route::resource('/tag', TagController::class);
 
 
