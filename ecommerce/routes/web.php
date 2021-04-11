@@ -36,5 +36,7 @@ Route::get('trash/category', [CategoriesController::class, 'trash'])->name('cate
 Route::patch('restore/category/{id}', [categoriesController::class, 'restore'])->name('category.restore');
 
 Route::resource('/tag', TagController::class);
+Route::get('trash/tag', [TagController::class, 'trash'])->name('tag.trash');
+Route::patch('restore/tag/{id}', [TagController::class, 'restore'])->name('tag.restore');
 
 
