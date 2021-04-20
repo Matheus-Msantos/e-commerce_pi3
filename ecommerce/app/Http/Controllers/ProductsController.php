@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Tag;
 
 
 class ProductsController extends Controller
@@ -14,11 +15,16 @@ class ProductsController extends Controller
     return view('product.index')->with('Products', Product::all());
   }
 
+  public function show(Product $product) {
+    dd($product);
+  }
+
   public function create() {
-    return view('product.create')->with('Categories', Category::all());
+    return view('product.create')->with([ 'Categories' => Category::all(), 'tags' => Tag::all() ]);
   }
 
   public function store(Request $request) {
+
     if($request->image){
       $image = $request->file('image')->store('product');
       $image = 'storage/' . $image;
@@ -27,19 +33,22 @@ class ProductsController extends Controller
       $image = 'storage/product/imagem.jpg';
     }
 
-    Product::create([
+    $product = Product::create([
       'name' => $request->name,
       'description' => $request->description,
       'price' => $request->price,
       'category_id' => $request->category_id,
       'image' => $image
     ]);
+
+    $product->tags()->sync($request->tags);
+
     session()->flash('success', 'Produto foi cadastrado com sucesso!');
     return redirect(Route('product.index'));
   }
 
   public function edit(Product $product) {
-    return view('product.edit')->with(['Product'=>$product, 'Category'=>Category::all()]);
+    return view('product.edit')->with(['Product' => $product, 'Category' => Category::all(), 'tags' => Tag::all()]);
   }
 
   public function update(Request $request, Product $product) {
@@ -60,6 +69,9 @@ class ProductsController extends Controller
       'category_id' => $request->category_id,
       'image' => $image
     ]);
+
+    $product->tags()->sync($request->tags);
+
     session()->flash('success', 'Produto atualizado com sucesso!');
     return redirect(Route('product.index'));
   }

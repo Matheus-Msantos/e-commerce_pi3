@@ -43,6 +43,15 @@
       </div>
 
       <div class="row">
+        <span class="form-label">Tags</span>
+        <select class="form-select" name="tags[]" multiple>
+          @foreach($tags as $tag)
+            <option value="{{ $tag->id }}" @if($Product->tags->contains($tag->id)) selected @endif>{{ $tag->name }}</option>
+          @endforeach
+        </select>
+      </div>
+
+      <div class="row">
         <span class="form-label">Imagem</span>
         <input type="file" class="form-control" name="image">
       </div>
