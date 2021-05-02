@@ -33,6 +33,11 @@ class CategoriesController extends Controller
   }
 
   public function destroy(Category $category) {
+    if($category->products()->count() > 0){
+      session()->flash('success', 'Essa Categoria não pode ser apagada!');
+      return redirect(Route('category.index'));
+    }
+
     $category->delete();
     session()->flash('success', 'Categoria removida com sucesso!');
     return redirect(Route('category.index'));

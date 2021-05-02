@@ -44,7 +44,7 @@
           @foreach($Tags as $tag)
             <tr>
               <td>{{ $tag->id }}</td>
-              <td>{{ $tag->name }}</td>
+              <td>{{ $tag->name }} ({{ $tag->products->count()}})</td>
               <td>
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('tag.edit', $tag->id) }}" class="btn btn-warning">Editar</a>

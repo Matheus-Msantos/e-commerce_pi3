@@ -45,13 +45,13 @@
         <tbody>
           @foreach($Products as $product)
             <tr>
-              <td>{{ $product->id }}</td>
-              <td><img src="{{ $product->image }}" style="width: 60px;"></td>
-              <td>{{ $product->name }}</td>
-              <td>{{ $product->description }}</td>
-              <td>{{ $product->price }}</td>
-              <td>{{ $product->category->name }}</td>
-              <td>
+              <td class="col-1">{{ $product->id }}</td>
+              <td class="col-1"><img src="{{ $product->image }}" style="width: 60px;"></td>
+              <td class="col-1">{{ $product->name }}</td>
+              <td class="col-3">{{ $product->description }}</td>
+              <td class="col-1">{{ $product->price }}</td>
+              <td class="col-1">{{ $product->category->name }}</td>
+              <td class="col-2">
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
                 <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
