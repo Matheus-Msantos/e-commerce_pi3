@@ -6,7 +6,7 @@
         <a href="{{ url('/') }}">Home</a>
         </li>
       <li class="breadcrumb-item" arial-current="page">
-        <a href="#">{{ $Product->category->name }}</a>
+        <a href="{{ Route('category.show', $Product->category->id)}}">{{ $Product->category->name }}</a>
       </li>
       <li class="breadcrumb-item" arial-current="page ">
       <a href="#">{{ $Product->name }}</a>
@@ -27,7 +27,7 @@
       <button class="btn btn-primary py-2">Comprar</button>
       <h3 class="pt-4">Produtos relacionados</h3>
       @foreach($Product->tags as $tag)
-        <a href="#" class="btn btn-sm btn-dark mb-4">{{ $tag->name }}</a>
+        <a href="{{ Route('tag.show', $tag->id) }}" class="btn btn-sm btn-dark mb-4">{{ $tag->name }}</a>
       @endforeach
     </div>
 

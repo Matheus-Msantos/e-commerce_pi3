@@ -20,4 +20,8 @@ class Product extends Model
   public function tags() {
     return $this->belongsToMany(Tag::class);
   }
+
+  public static function destaques() {
+    return Product::all()->take(3);
+  }
 }

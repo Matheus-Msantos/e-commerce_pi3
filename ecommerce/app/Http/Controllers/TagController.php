@@ -19,7 +19,6 @@ class TagController extends Controller
       return view('tag.create');
     }
 
-
     public function store(Request $request)
     {
       Tag::create($request->all());
@@ -30,7 +29,7 @@ class TagController extends Controller
 
     public function show(Tag $tag)
     {
-      //
+      return view('tag.show')->with(['tag' => $tag, 'products' => $tag->products()->paginate(3)]);
     }
 
 

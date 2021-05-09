@@ -12,6 +12,7 @@
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4d52201842.js" crossorigin="anonymous"></script>
+  @yield('css')
 
 </head>
 <body>
@@ -32,7 +33,7 @@
               <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
                 @foreach(App\Models\Category::all() as $category)
                   <li>
-                    <a class="dropdown-item">{{ $category->name }}</a>
+                    <a class="dropdown-item" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
                   </li>
                 @endforeach
               </ul>
@@ -42,14 +43,13 @@
               <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
                 @foreach(App\Models\Tag::all() as $tag)
                   <li>
-                    <a class="dropdown-item">{{ $tag->name }}</a>
+                    <a class="dropdown-item" href="{{ Route('tag.show', $tag->id) }}">{{ $tag->name }}</a>
                   </li>
                   @endforeach
               </ul>
             </li>
           </ul>
         </div>
-
       </div>
 
     </nav>
