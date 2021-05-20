@@ -43,7 +43,7 @@
               <span class="d-block">R$ {{ $product->price }}</span>
             <div>
               <a href="{{ Route('product.show', $product->id) }}" class="btn btn-primary">Visualizar</a>
-              <a href="" class="btn btn-primary">Adicionar ao carrinho</a>
+              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-primary">Adicionar ao carrinho</a>
             </div>
           </div>
         </div>

@@ -8,7 +8,6 @@
 
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4d52201842.js" crossorigin="anonymous"></script>
@@ -28,7 +27,7 @@
 
         <div id="menuInfo" class="collapse navbar-collapse">
           <ul class="navbar-nav">
-          <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
               <a href="#" class="nav-link dropdown-toggle" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
               <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
                 @foreach(App\Models\Category::all() as $category)
@@ -49,10 +48,21 @@
               </ul>
             </li>
           </ul>
+          <div class="navbar-nav  ms-auto">
+            <div class="d-flex">
+            @if(Auth()->user())
+              <span class="nav-link"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
+              <a class="nav-link ms-2" class="ms-2 text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> ({{ \App\Models\Cart::count() }})</a>
+            @else
+              <a class="nav-link" href="{{ Route('login') }}">Logar</a>
+              <a class="nav-link ms-2" href="{{ Route('register') }}">Registrar</a>
+            @endif
+            </div>
+          </div>
         </div>
       </div>
-
     </nav>
+
   </header>
 
   <main class="container">
@@ -98,5 +108,3 @@
 
 </body>
 </html>
-
-

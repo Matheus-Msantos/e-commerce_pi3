@@ -24,7 +24,7 @@
       <h2 class="py-2">{{ $Product->name }}</h2>
       <p class="py-2">{{ $Product->description }}</p>
       <span class="h4 d-block py-2">R$ {{ $Product->price }}</span>
-      <button class="btn btn-primary py-2">Comprar</button>
+      <a href="{{ Route('cart.add', $Product->id) }}" class="btn btn-primary py-2">Adicionar no carrinho</a>
       <h3 class="pt-4">Produtos relacionados</h3>
       @foreach($Product->tags as $tag)
         <a href="{{ Route('tag.show', $tag->id) }}" class="btn btn-sm btn-dark mb-4">{{ $tag->name }}</a>

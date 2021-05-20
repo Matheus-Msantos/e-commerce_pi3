@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\http\Controllers\TagController;
+use App\http\Controllers\CartsController;
 
 require __DIR__.'/auth.php';
 
@@ -23,11 +24,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('home');
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::group(['middleware' => 'isAdmin'], function(){
+Route::group(['middleware' => 'isAdmin'], function() {
   //Product, category and tags
   Route::resource('/product', ProductsController::class, ['except' => ['show']]);
   Route::get('trash/product', [ProductsController::class, 'trash'])->name('product.trash');
@@ -40,6 +41,13 @@ Route::group(['middleware' => 'isAdmin'], function(){
   Route::resource('/tag', TagController::class, ['except' => ['show']]);
   Route::get('trash/tag', [TagController::class, 'trash'])->name('tag.trash');
   Route::patch('restore/tag/{id}', [TagController::class, 'restore'])->name('tag.restore');
+});
+
+Route::group(['middleware' => 'auth'], function() {
+  Route::get('/cart/add/{product}', [CartsController::class, 'add'])->name('cart.add');
+  Route::get('/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
+  Route::get('cart/payment', [CartsController::class, 'payment'])->name('cart.payment');
+  Route::get('cart', [CartsController::class, 'show'])->name('cart.show');
 });
 
 Route::resource('/product', ProductsController::class, ['only' => ['show']]);
