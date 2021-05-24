@@ -54,10 +54,10 @@
               <td class="col-2">
                 <a href="#" class="btn btn-primary">Visualizar</a>
                 <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
+                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline ">
                   @method('DELETE')
                   @csrf
-                  <button type="submit" class="btn btn-danger">Excluir</button>
+                  <button type="submit" class="btn btn-danger mt-1">Excluir</button>
                 </form>
               </td>
             </tr>

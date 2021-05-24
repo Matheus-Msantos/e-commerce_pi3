@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Planta Apê</title>
 
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/4d52201842.js" crossorigin="anonymous"></script>
@@ -15,20 +16,19 @@
 
 </head>
 <body>
-
   <header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light shadow-sm">
+    <nav class="menu text-white navbar navbar-expand-sm shadow-sm">
 
       <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url('/') }}">Nome</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuInfo" >
+        <a href="{{ url('/') }}"><img class="img-logo" src="img\logo.png"></a>
+        <button class="btn-mobile navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuInfo" >
           <i class="fas fa-bars"></i>
         </button>
 
-        <div id="menuInfo" class="collapse navbar-collapse">
-          <ul class="navbar-nav">
+        <div id="menuInfo" class="collapse navbar-collapse ms-5">
+          <ul class="navbar-nav text-white">
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
+              <a href="#" class="nav-link dropdown-toggle text-white" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
               <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
                 @foreach(App\Models\Category::all() as $category)
                   <li>
@@ -38,7 +38,7 @@
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Tags </a>
+              <a href="#" class="nav-link dropdown-toggle text-white" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Filtros </a>
               <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
                 @foreach(App\Models\Tag::all() as $tag)
                   <li>
@@ -48,14 +48,18 @@
               </ul>
             </li>
           </ul>
-          <div class="navbar-nav  ms-auto">
+          <div class="navbar-nav margin-account">
             <div class="d-flex">
             @if(Auth()->user())
               <span class="nav-link"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
-              <a class="nav-link ms-2" class="ms-2 text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> ({{ \App\Models\Cart::count() }})</a>
+              <a class="nav-link ms-2 text-white" class="ms-2 text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+              <form action="{{ Route('logout') }}" method="POST" class="d-flex">
+                @csrf
+                <button class="btn-logout" type="submit">sair</button>
+              </form>
             @else
-              <a class="nav-link" href="{{ Route('login') }}">Logar</a>
-              <a class="nav-link ms-2" href="{{ Route('register') }}">Registrar</a>
+              <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
+              <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
             @endif
             </div>
           </div>
@@ -82,11 +86,28 @@
 
   </main>
 
-  <footer class="container bg-dark text-white py-5">
+  <footer class="container footer text-white py-5">
     <div class="row">
 
-      <div class="col-6">
-        <h2> Localização</h2>
+    <div class="col-sm-10 col-md-4  mx-auto text-center">
+        <img class="img-logo" src="img/logo.png">
+        <p class="mt-1">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
+
+      <div class="col-sm-10 col-md-4 mx-auto text-center">
+        <h2 class="h3 mt-5 ">Redes Sociais</h2>
+        <div class="pt-1">
+          <a class="mx-2 text-dark" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+          <a class="mx-2 text-dark" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+          <a class="mx-2 text-dark" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+        </div>
+      </div>
+
+
+      <div class="col-sm-10 col-md-4  mx-auto text-center">
+        <h2 class="h3 mt-5">Localização</h2>
         <address>
           Rua Lorem, 20 <br>
           Lorem ipsum dolor - SP <br>
@@ -95,15 +116,19 @@
         </address>
       </div>
 
-      <div class="col-6">
-        <h2>Horario de funcionamento</h2>
-        <ul class="list-unstyled">
-          <li>Segunda - Sexta: 9:00h as 23:00h</li>
-          <li>Finais de semanas - Feriados: 10:00h as 21:00h</li>
-        </ul>
-      </div>
-
     </div>
+
+    <div class="row">
+      <div class="col-2 ms-auto mt-4">
+        <div>
+          <span class="px-1"><i class="fab fa-cc-mastercard fa-2x"></i></span>
+          <span class="px-1"><i class="fab fa-cc-visa fa-2x"></i></span>
+          <span class="px-1"><i class="fab fa-cc-paypal fa-2x"></i></span>
+          <span class="px-1"><i class="fab fa-cc-amazon-pay fa-2x"></i></span>
+        </div>
+      </div>
+    </div>
+
   </footer>
 
 </body>
