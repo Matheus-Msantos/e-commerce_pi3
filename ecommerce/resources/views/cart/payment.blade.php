@@ -5,13 +5,13 @@
   <div class="col-md-6 col-10  bg-light p-5 my-3">
     <h3>Endereço de Entrega</h3>
     <address>
-      Rua um, 175 Vila Natal <br>
-      Vila Natal <br>
-      São Paulo, SP <br>
-      CEP: 04364-450 <br>
+      {{\App\Models\Address::adder()->street}}, {{\App\Models\Address::adder()->number}} <br>
+      {{\App\Models\Address::adder()->district}} <br>
+      {{\App\Models\Address::adder()->state}} <br>
+      CEP: {{\App\Models\Address::adder()->cep}} <br>
       Brasil
     </address>
-    <a class="float-end">Trocar endereço</a>
+    <a href="{{Route('address.edit', Auth()->user()->id)}}" class="float-end">Trocar endereço</a>
   </div>
 
   <div class="col-md-6 col-10 p-5 my-3">
@@ -32,7 +32,7 @@
   </div>
 </div>
 
-<form class="my-5 bg-light p-5">
+<form class="my-5 bg-light p-5" method="POST" action="{{ Route('order.add') }}">
   @csrf
   <h2>Dados do pagamento</h2>
   <div class="row my-4">
@@ -48,7 +48,7 @@
       <label class="form-label" for="cc-card">Número do cartão</label>
       <div class="input-group">
         <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
-        <input class="form-control" id="cc-card" name="cc-card" type="text" required>
+        <input class="form-control" id="cc_card" name="cc_card" type="text" required>
       </div>
     </div>
   </div>

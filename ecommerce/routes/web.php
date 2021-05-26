@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\http\Controllers\TagController;
 use App\http\Controllers\CartsController;
+use App\http\Controllers\AddressesController;
+use App\http\Controllers\OrdersController;
 
 require __DIR__.'/auth.php';
 
@@ -48,6 +50,14 @@ Route::group(['middleware' => 'auth'], function() {
   Route::get('/cart/remove/{product}', [CartsController::class, 'remove'])->name('cart.remove');
   Route::get('cart/payment', [CartsController::class, 'payment'])->name('cart.payment');
   Route::get('cart', [CartsController::class, 'show'])->name('cart.show');
+
+  Route::get('address/create', [AddressesController::class , 'create'])->name('address.create');
+  Route::post('address/add/', [AddressesController::class, 'add'])->name('address.add');
+  Route::get('address/edit/{id}', [AddressesController::class, 'edit'])->name('address.edit');
+  Route::post('address/update/{id}', [AddressesController::class, 'update'])->name('update.address');
+
+  Route::post('/order/add', [OrdersController::class, 'add'])->name('order.add');
+  Route::get('order', [OrdersController::class, 'show'])->name('order.show');
 });
 
 Route::resource('/product', ProductsController::class, ['only' => ['show']]);
