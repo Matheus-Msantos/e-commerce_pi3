@@ -1,0 +1,31 @@
+header {
+  color: white;
+  background: #27592B;
+}
+
+.img-logo{
+  width: 80px;
+  border-radius: 50%;
+}
+
+.account {
+  text-align: end;
+}
+
+.btn-logout {
+  color: white;
+  background: none;
+  border: none;
+}
+
+.count {
+  font-size: 12px;
+  background: #FB7181;
+  padding: 3px;
+  border-radius: 50%;
+}
+
+.footer {
+  background: #27592B;
+  border-right: 10px solid #818C68;
+}

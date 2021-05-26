@@ -1,13 +1,92 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link" href="{{ Route('product.index') }}">Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ Route('category.index') }}">Categories</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ Route('tag.index') }}">Tags</a></li> _
-      <li class="nav-item"><a class="nav-link" href="{{ Route('product.trash') }}">Product trash</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ Route('category.trash') }}">Category trash</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{ Route('tag.trash') }}">Tag trash</a></li>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
 
-    </ul>
-  </nav>
-</header>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/admin.css">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/4d52201842.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a href="{{ url('/') }}"><img class="img-logo" src="img\logo.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse ps-3" id="navCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="{{ Route('product.index') }}" id="menuDropDownProduto" data-bs-toggle="dropdown" role="button"> Produtos </a>
+                <ul class="dropdown-menu" aria-labelledby="menuDropDownProduto">
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('product.index') }}">Lista</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('product.trash') }}">Lixeira</a>
+                  </li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categoria </a>
+                <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('category.index') }}">Lista</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('category.trash') }}">Lixeira</a>
+                  </li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Filtros </a>
+                <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('tag.index') }}">Lista</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('tag.trash') }}">Lixeira</a>
+                  </li>
+                </ul>
+            </li>
+          </ul>
+          <div class="ms-auto navbar-nav">
+              <div class="d-flex">
+                @if(Auth()->user())
+                  <div class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
+                    <div class="dropdown-menu" aria-labelledby="userDropDown">
+                      <a class="dropdown-item">Pedidos</a>
+                      <a class="dropdown-item">Area do Admin</a>
+                    </div>
+                  </div>
+
+                  <a class="nav-link text-white px-3" class="text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i>
+                  <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+                  <form action="{{ Route('logout') }}" method="POST" class="d-flex">
+                    @csrf
+                    <button class="px-3 btn-logout" type="submit">sair</button>
+                  </form>
+                @else
+                  <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
+                  <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
+                @endif
+              </div>
+            </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+</body>
+</html>
