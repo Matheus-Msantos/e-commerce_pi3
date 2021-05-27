@@ -30,15 +30,15 @@ class AddressesController extends Controller
     return view('address.edit')->with('Address', $address);
   }
 
-  public function update(Address $address) {
+  public function update(Request $request, Address $address) {
     $item = Address::where('user_id', '=', Auth()->user()->id)->first();
 
     $item->update([
-      'street' => $item->street,
-      'district' => $item->district,
-      'number' => $item->number,
-      'state' => $item->state,
-      'cep' => $item->cep,
+      'street' => $request->street,
+      'district' => $request->district,
+      'number' => $request->number,
+      'state' => $request->state,
+      'cep' => $request->cep,
     ]);
     session()->flash('success', 'Endereço atualizado com sucesso!');
     return redirect(Route('cart.payment'));
