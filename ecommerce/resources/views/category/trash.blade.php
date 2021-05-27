@@ -96,7 +96,7 @@
     </nav>
   </header>
   <main class="container pt-1">
-    <h1>Lixeira de categorias</h1>
+    <h1 class="py-3 text-muted">Lixeira de categorias</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -105,13 +105,13 @@
     @endif
 
     <div class="row">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped text-center align-middle">
+        <thead class="table-success">
           <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Qtd</td>
-            <td>Ações</td>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Qth</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -125,7 +125,7 @@
                 <form action="{{Route('category.restore', $category->id)}}" method="POST" onsubmit="return restore()" class="d-inline">
                   @csrf
                   @method('PATCH')
-                  <button type="submit" class="btn btn-success">Restaurar</button>
+                  <button type="submit" class="btn btn-outline-success"><i class="fas fa-trash-restore-alt"></i> Restaurar</button>
                 </form>
               </td>
             </tr>

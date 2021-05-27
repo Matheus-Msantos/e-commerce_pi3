@@ -76,7 +76,7 @@
                   <span class="count">({{ \App\Models\Cart::count() }})</span></a>
                   <form action="{{ Route('logout') }}" method="POST" class="d-flex">
                     @csrf
-                    <button class="px-3 btn-logout" type="submit">sair</button>
+                    <button class="px-3 btn-logout" type="submit"><i class="fas fa-door-open"></i> Sair</button>
                   </form>
                 @else
                   <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>

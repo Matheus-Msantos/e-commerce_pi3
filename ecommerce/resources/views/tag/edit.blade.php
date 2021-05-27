@@ -89,7 +89,7 @@
     </nav>
   </header>
   <main class="container">
-    <h1>Editar Tag</h1>
+    <h1 class="py-3 text-muted">Editar Filtro</h1>
 
     <form method="POST" action="{{ Route('tag.update', $Tag->id )}}">
       @csrf
@@ -99,8 +99,8 @@
         <input type="text" class="form-control" name="name" value="{{ $Tag->name }}">
       </div>
 
-      <div class="row mt-4">
-        <button type="submit" class="bnt btn-success btn-lg">Atualizar</button>
+      <div class="row mt-4 mx-5">
+        <button type="submit" class="bnt btn-outline-success btn-lg">Atualizar</button>
       </div>
     </form>
   </main>

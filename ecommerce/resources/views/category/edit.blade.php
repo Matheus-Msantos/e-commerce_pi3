@@ -88,8 +88,9 @@
       </div>
     </nav>
   </header>
+
   <main class="container">
-    <h1>Editar Categoria</h1>
+    <h1 class="py-3 text-muted">Editar Categoria</h1>
 
     <form method="POST" action="{{ Route('category.update', $Category->id )}}">
       @csrf
@@ -99,8 +100,8 @@
         <input type="text" class="form-control" name="name" value="{{ $Category->name }}">
       </div>
 
-      <div class="row mt-4">
-        <button type="submit" class="bnt btn-success btn-lg">Atualizar</button>
+      <div class="row mt-4 mx-56">
+        <button type="submit" class="bnt btn-outline-success btn-lg">Atualizar</button>
       </div>
     </form>
   </main>

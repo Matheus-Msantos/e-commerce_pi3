@@ -96,7 +96,7 @@
     </nav>
   </header>
   <main class="container pt-1">
-    <h1>Lixeira de produtos</h1>
+    <h1 class="py-3 text-muted">Lixeira de produtos</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -104,33 +104,33 @@
       </div>
     @endif
     <div class="row">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped text-center align-middle">
+        <thead class="table-success">
           <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Imagem</td>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Categoria</td>
-            <td>Ações</td>
+            <th>#</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
         <tbody>
           @foreach($Products as $product)
             <tr>
-              <td>{{ $product->id }}</td>
-              <td><img src="{{ $product->image }}" style="width: 60px;"></td>
-              <td>{{ $product->name }}</td>
-              <td>{{ $product->description }}</td>
-              <td>{{ $product->price }}</td>
-              <td>{{ $product->category->name }}</td>
-              <td>
+              <td class="col-1">{{ $product->id }}</td>
+              <td class="col-1"><img src="{{ $product->image }}" style="width: 60px;"></td>
+              <td class="col-1">{{ $product->name }}</td>
+              <td class="col-3">{{ $product->description }}</td>
+              <td class="col-1">{{ $product->price }}</td>
+              <td class="col-1">{{ $product->category->name }}</td>
+              <td class="col-2">
                 <form action="{{ Route('product.restore', $product->id) }}" method="POST" onsubmit="return restore()" class="d-inline">
                   @method('PATCH')
                   @csrf
-                  <button type="submit" class="btn btn-success">Resturar</button>
+                  <button type="submit" class="btn btn-outline-success"><i class="fas fa-trash-restore-alt"></i> Resturar</button>
                 </form>
               </td>
             </tr>

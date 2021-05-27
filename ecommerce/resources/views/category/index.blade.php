@@ -21,7 +21,7 @@
 <body>
   @include('layouts.menu')
   <main class="container pt-1">
-    <h1>Lista de categorias</h1>
+    <h1 class="py-3 text-muted">Lista de categorias</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -30,13 +30,13 @@
     @endif
 
     <div class="row">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped text-center align-middle">
+        <thead class="table-success">
           <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Qtd</td>
-            <td>Ações</td>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Qth</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -47,12 +47,12 @@
               <td>{{ $category->name }}</td>
               <td>{{ $category->products->count() }}</td>
               <td>
-                <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="{{ Route('category.edit', $category->id) }}" class="btn btn-warning">Editar</a>
+                <a href="{{ Route('category.show', $category->id) }}" class=" text-primary mx-1"><i class="fas fa-eye fa-lg"></i></a>
+                <a href="{{ Route('category.edit', $category->id) }}" class=" text-warning mx-1"><i class="fas fa-edit fa-lg"></i></a>
                 <form action="{{Route('category.destroy', $category->id)}}" method="POST" onsubmit="return remover()" class="d-inline">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger">Excluir</button>
+                  <button type="submit" class="text-danger border-none"><i class="fas fa-trash-alt fa-lg"></i></button>
                 </form>
               </td>
             </tr>
@@ -61,7 +61,7 @@
       </table>
     </div>
 
-    <a href="{{ Route('category.create') }}" class="btn btn-primary">Cadastrar categoria</a>
+    <a href="{{ Route('category.create') }}" class="btn btn-outline-success">Cadastrar categoria</a>
 
   </main>
 </body>

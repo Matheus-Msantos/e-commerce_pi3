@@ -87,8 +87,9 @@
       </div>
     </nav>
   </header>
+
   <main class="container">
-    <h1>Cadastrar Tag</h1>
+    <h1 class="py-3 text-muted">Cadastrar Filtro</h1>
 
     <form method="POST" action="{{ Route('tag.store') }}">
       @csrf
@@ -97,8 +98,8 @@
         <input type="text" class="form-control" name="name">
       </div>
 
-      <div class="row mt-4">
-        <button type="submit" class="bnt btn-success btn-lg">Salvar</button>
+      <div class="row mt-4 mx-5">
+        <button type="submit" class="bnt btn-outline-success btn-lg">Salvar</button>
       </div>
     </form>
   </main>

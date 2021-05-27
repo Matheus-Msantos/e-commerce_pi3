@@ -13,6 +13,7 @@
   <script src="https://kit.fontawesome.com/4d52201842.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <header>
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
@@ -59,35 +60,38 @@
                 </ul>
             </li>
           </ul>
-          <div class="ms-auto navbar-nav">
-              <div class="d-flex">
-                @if(Auth()->user())
-                  <div class="nav-item dropdown">
-                    <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
-                    <div class="dropdown-menu" aria-labelledby="userDropDown">
-                      <a class="dropdown-item">Pedidos</a>
-                      <a class="dropdown-item">Area do Admin</a>
-                    </div>
-                  </div>
 
-                  <a class="nav-link text-white px-3" class="text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i>
-                  <span class="count">({{ \App\Models\Cart::count() }})</span></a>
-                  <form action="{{ Route('logout') }}" method="POST" class="d-flex">
-                    @csrf
-                    <button class="px-3 btn-logout" type="submit">sair</button>
-                  </form>
-                @else
-                  <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
-                  <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
-                @endif
-              </div>
+          <div class="ms-auto navbar-nav">
+            <div class="d-flex">
+              @if(Auth()->user())
+                <div class="nav-item dropdown">
+                  <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
+                  <div class="dropdown-menu" aria-labelledby="userDropDown">
+                    <a class="dropdown-item">Pedidos</a>
+                   <a class="dropdown-item">Area do Admin</a>
+                  </div>
+                </div>
+
+                <a class="nav-link text-white px-3" class="text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i>
+                <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+                <form action="{{ Route('logout') }}" method="POST" class="d-flex">
+                  @csrf
+                  <button class="px-3 btn-logout" type="submit">sair</button>
+                </form>
+              @else
+                <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
+                <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
+              @endif
             </div>
+          </div>
+
         </div>
       </div>
     </nav>
   </header>
+
   <main class="container">
-    <h1>Editar produtos</h1>
+    <h1 class="py-3 text-muted">Editar produtos</h1>
 
     <form method="POST" action="{{ Route('product.update', $Product->id) }}" enctype="multipart/form-data">
       @csrf
@@ -130,8 +134,8 @@
         <input type="file" class="form-control" name="image">
       </div>
 
-      <div class="row mt-4">
-        <button type="submit" class="bnt btn-success btn-lg">Atualizar</button>
+      <div class="row mt-4 mx-5">
+        <button type="submit" class="bnt btn-outline-success btn-lg">Atualizar</button>
       </div>
     </form>
   </main>
