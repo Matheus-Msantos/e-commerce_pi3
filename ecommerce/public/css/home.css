@@ -29,16 +29,8 @@
 
 
 .img {
-  width: 170px;
-  height: 170px;
+  height: 250px;
 }
-
-.btn {
-  background: rgba(242, 68, 5, 0.7);
-  border-radius: 5px;
-
-}
-
 
 #banner {
   background: url('../img/topo.jpg');
@@ -59,36 +51,46 @@
 }
 
 .btn-comprar {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
-    color: white
+  background: rgba(242, 68, 5, 0.7);
+  border-radius: 5px;
+  color: white;
+  box-shadow: inset 0 0 0 0px rgba(242, 68, 5, 0.7);
+}
 
-  }
-  .btn-comprar:hover {
-    box-shadow: 0 0 40px 40px rgba(242, 68, 5, 0.7) inset;
-  }
+.btn-comprar:hover {
+  box-shadow: inset 0 100px 0 0px rgba(242, 68, 5, 0.7) ;
+  transition: 0.3s ease-in-out;
+}
 
-  .text-product {
-    margin-top: 5px;
-    color: #223263;
-    font-size: 18px;
-    font-weight: bold;
-  }
+.text-product {
+  color: #223263;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-  .text-price {
-    color: #F24405;
-    font-weight: bold;
-    font-size: 18px;
-
-  }
-
-#menu{
-
-  font-size:20px;
-  font-weight: 500;
+.text-price {
+  color: #F24405;
+  font-weight: bold;
+  font-size: 18px;
 
 }
+
+.menu-secundary {
+  font-size:19px;
+  font-weight: 500;
+  color: black;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 0px rgba(242, 68, 5, 0.7);
+}
+
+.menu-secundary:hover {
+  background-color: #F24405;
+  color: white;
+  border-radius: 6px;
+  box-shadow: inset 400px 0 0 0px rgba(242, 68, 5, 0.7) ;
+  transition: 0.5s ease-in-out;
+}
+
+
+
 

@@ -1,35 +1,51 @@
 .menu {
-    background: #27592B;
-    border-bottom: 10px solid #818C68;
+  background: #27592B;
+  border-bottom: 10px solid #818C68;
 }
 
 .menu a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .img-logo{
-    width: 80px;
-    border-radius: 50%;
-}
-
-.margin-account {
-    margin-left: 75%;
+  width: 80px;
+  border-radius: 50%;
 }
 
 .btn-logout {
-    color: white;
-    background: none;
-    border: none;
+  color: white;
+  background: none;
+  border: none;
 }
 
 .count {
-    font-size: 12px;
-    background: #FB7181;
-    padding: 3px;
-    border-radius: 50%;
+  font-size: 12px;
+  background: #FB7181;
+  padding: 3px;
+  border-radius: 50%;
 }
 
 .footer {
-    background: #27592B;
-    border-right: 10px solid #818C68;
+  background: #27592B;
+  border-right: 10px solid #818C68;
+}
+
+.icon-redes {
+  color: black;
+}
+
+.icon-redes:hover {
+  color:rgba(242, 68, 5, 0.5);
+}
+
+hr:not([size]) {
+  height: 2px;
+}
+
+.login {
+  color: white;
+}
+
+.login:hover {
+  color: black;
 }
