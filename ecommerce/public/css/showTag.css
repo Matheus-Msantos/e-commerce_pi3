@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.bg-main {
+  background-color: #e9e9e9;
+}
+.itens-menu {
+    display: flex;
+    justify-content: space-between;
+    font-family: Poppins, sans-serif;
+
+}
+
+.title-main {
+  font-family: Poppins;
+}
+
+.title-banner {
+  color: #27592B;
+  font-weight: 900;
+  font-size: 50px;
+
+}
+
+.title-product {
+ color: #22262A;
+ font-weight: 300;
+ font-size: 35px;
+}
+
+
+.img {
+  height: 250px;
+}
+
+#banner {
+  background: url('../img/topo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 450px;
+}
+
+#banner-especial-cozinhas {
+
+  background: url( '../img/topo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 450px;
+
+}
+
+.btn-comprar {
+  background: rgba(242, 68, 5, 0.7);
+  border-radius: 5px;
+  color: white;
+  box-shadow: inset 0 0 0 0px rgba(242, 68, 5, 0.7);
+}
+
+.btn-comprar:hover {
+  box-shadow: inset 0 100px 0 0px rgba(242, 68, 5, 0.7) ;
+  transition: 0.3s ease-in-out;
+}
+
+.text-product {
+  color: #223263;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.text-price {
+  color: #F24405;
+  font-weight: bold;
+  font-size: 18px;
+
+}
+
+.menu-secundary {
+  font-size:19px;
+  font-weight: 500;
+  color: black;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 0px rgba(242, 68, 5, 0.7);
+}
+
+.menu-secundary:hover {
+  background-color: #F24405;
+  color: white;
+  border-radius: 6px;
+  box-shadow: inset 400px 0 0 0px rgba(242, 68, 5, 0.7) ;
+  transition: 0.5s ease-in-out;
+}
+
+
+
+
