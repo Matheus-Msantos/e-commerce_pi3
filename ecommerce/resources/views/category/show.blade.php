@@ -1,35 +1,27 @@
 @extends('layouts.store')
 
-@section('css')
-  <style>
-    .img-height{
-      height: 250px;
-    }
-  </style>
-@endsection
+
 
 @section('content')
-  <section class="my-4">
-    <div class="row">
-      <div class="text-center">
-        <h2>{{ $category->name }}</h2>
-        <span class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint, velit.</span>
-      </div>
+  <section class= "banner d-flex justify-content-center align-items-center p-4 my-4">
+    <div>
+      <span class= "title-category">MUDAS</span>
     </div>
-
+  </section>
+  <section class="my-4">
     <div class="row">
       @foreach($products as $product)
         <div class="col-lg-4 col-md-6 col-sm-10">
           <div class="img-height text-center">
-            <img src="{{ asset($product->image) }}" class="h-100">
+            <img src="{{ asset($product->image) }}" class="img">
           </div>
 
           <div class="text-center">
-              <span class="d-block fw-bold">{{ $product->name }}</span>
-              <span class="d-block">R$ {{ $product->price }}</span>
+              <span class="d-block text-main text-product">{{ $product->name }}</span>
+              <span class="d-block text-main text-product">R$ {{ $product->price }}</span>
             <div>
-              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-primary">Visualizar</a>
-              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-primary">Adicionar ao carrinho</a>
+              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-comprar"><i class="fas fa-cart-plus"></i></a>
+              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-comprar">Comprar</a>
             </div>
           </div>
         </div>
