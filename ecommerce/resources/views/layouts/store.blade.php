@@ -9,6 +9,7 @@
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/menu.css">
+  <link rel="stylesheet" type="text/css" href="../../css/menu.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -21,7 +22,7 @@
     <nav class="menu text-white navbar navbar-expand-sm shadow-sm">
 
       <div class="container-fluid">
-        <a href="{{ url('/') }}"><img class="img-logo" src="img\logo.png"></a>
+        <a href="{{ url('/') }}"><img class="img-logo" src="../../img/logo.png"></a>
         <button class="btn-mobile navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuInfo" >
           <i class="fas fa-bars"></i>
         </button>
@@ -49,17 +50,23 @@
               </ul>
             </li>
           </ul>
-          <div class="navbar-nav margin-account">
+          <div class="navbar-nav margin-account ms-auto">
             <div class="d-flex">
             @if(Auth()->user())
-              <span class="nav-link"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
-              <a class="nav-link ms-2 text-white" class="ms-2 text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+            <div class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
+                    <div class="dropdown-menu" aria-labelledby="userDropDown">
+                      <a class="dropdown-item">Pedidos</a>
+                      <a href="{{ Route('product.index') }}" class="dropdown-item">Area do Admin</a>
+                    </div>
+                  </div>
+              <a class="nav-link ms-2 login" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
               <form action="{{ Route('logout') }}" method="POST" class="d-flex">
                 @csrf
-                <button class="btn-logout" type="submit">sair</button>
+                <button class="btn-logout login" type="submit"><i class="fas fa-door-open"></i> Sair</button>
               </form>
             @else
-              <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
+              <a class="login"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
               <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
             @endif
             </div>
@@ -91,7 +98,7 @@
     <div class="row">
 
     <div class="col-sm-10 col-md-4  mx-auto text-center">
-        <img class="img-logo" src="img/logo.png">
+        <img class="img-logo" src="../../img/logo.png">
         <p class="mt-1">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
@@ -100,9 +107,9 @@
       <div class="col-sm-10 col-md-4 mx-auto text-center">
         <h2 class="h3 mt-5 ">Redes Sociais</h2>
         <div class="pt-1">
-          <a class="mx-2 text-dark" href="#"><i class="fab fa-facebook fa-2x"></i></a>
-          <a class="mx-2 text-dark" href="#"><i class="fab fa-instagram fa-2x"></i></a>
-          <a class="mx-2 text-dark" href="#"><i class="fab fa-twitter fa-2x"></i></a>
+          <a class="mx-2 icon-redes" href="#"><i class="fab fa-facebook fa-2x"></i></a>
+          <a class="mx-2 icon-redes" href="#"><i class="fab fa-instagram fa-2x"></i></a>
+          <a class="mx-2 icon-redes" href="#"><i class="fab fa-twitter fa-2x"></i></a>
         </div>
       </div>
 
@@ -120,8 +127,10 @@
     </div>
 
     <div class="row">
-      <div class="col-2 ms-auto mt-4">
-        <div>
+
+      <div class="col-2 ms-auto w-50 mt-4">
+      <hr class="my-2">
+        <div class="text-end">
           <span class="px-1"><i class="fab fa-cc-mastercard fa-2x"></i></span>
           <span class="px-1"><i class="fab fa-cc-visa fa-2x"></i></span>
           <span class="px-1"><i class="fab fa-cc-paypal fa-2x"></i></span>
