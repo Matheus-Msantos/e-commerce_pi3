@@ -21,7 +21,7 @@
 <body>
   @include('layouts.menu')
   <main class="container pt-1">
-    <h1>Lista de produtos</h1>
+    <h1 class="py-3 text-muted">Lista de produtos</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -29,16 +29,16 @@
       </div>
     @endif
     <div class="row">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped text-center align-middle">
+        <thead class="table-success">
           <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Imagem</td>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Categoria</td>
-            <td>Ações</td>
+            <th>#</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -52,12 +52,12 @@
               <td class="col-1">{{ $product->price }}</td>
               <td class="col-1">{{ $product->category->name }}</td>
               <td class="col-2">
-                <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="{{ Route('product.edit', $product->id) }}" class="btn btn-warning">Editar</a>
-                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline ">
+                <a href="{{ Route('product.show', $product->id) }}" class="text-primary mx-1 "><i class="fas fa-eye fa-lg"></i></a>
+                <a href="{{ Route('product.edit', $product->id) }}" class="text-warning mx-1"><i class="fas fa-edit fa-lg"></i></a>
+                <form action="{{ Route('product.destroy', $product->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
                   @method('DELETE')
                   @csrf
-                  <button type="submit" class="btn btn-danger mt-1">Excluir</button>
+                  <button type="submit" class="text-danger border-none"><i class="fas fa-trash-alt fa-lg"></i></button>
                 </form>
               </td>
             </tr>
@@ -66,7 +66,7 @@
       </table>
     </div>
 
-    <a href="{{ Route('product.create') }}" class="btn btn-primary">Cadastrar produto</a>
+    <a href="{{ Route('product.create') }}" class=" my-3 btn btn-outline-success">Cadastrar produto</a>
 
   </main>
 </body>

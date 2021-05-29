@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Lista de tags</title>
+  <title>Lista de Filtros</title>
 
    <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -22,7 +22,7 @@
 <body>
   @include('layouts.menu')
   <main class="container pt-1">
-    <h1>Lista de tags</h1>
+    <h1 class="py-3 text-muted">Lista de Filtros</h1>
 
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
@@ -31,12 +31,12 @@
     @endif
 
     <div class="row">
-      <table class="table table-striped">
-        <thead>
+      <table class="table table-striped text-center align-middle">
+        <thead class="table-success">
           <tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Ações</td>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Ações</th>
           </tr>
         </thead>
 
@@ -46,12 +46,12 @@
               <td>{{ $tag->id }}</td>
               <td>{{ $tag->name }} ({{ $tag->products->count()}})</td>
               <td>
-                <a href="#" class="btn btn-primary">Visualizar</a>
-                <a href="{{ Route('tag.edit', $tag->id) }}" class="btn btn-warning">Editar</a>
+                <a href="{{ Route('tag.show', $tag->id) }}" class="text-primary"><i class="fas fa-eye fa-lg mx-1"></i></a>
+                <a href="{{ Route('tag.edit', $tag->id) }}" class="text-warning"><i class="fas fa-edit fa-lg mx-1"></i></a>
                 <form action="{{ Route('tag.destroy', $tag->id) }}" method="POST" onsubmit="return remover()" class="d-inline">
                   @method('DELETE')
                   @csrf
-                  <button type="submit" class="btn btn-danger">Excluir</button>
+                  <button type="submit" class="text-danger border-none"><i class="fas fa-trash-alt fa-lg"></i></button>
                 </form>
               </td>
             </tr>
@@ -60,7 +60,7 @@
       </table>
     </div>
 
-    <a href="{{ Route('tag.create') }}" class="btn btn-primary">Cadastrar Tag</a>
+    <a href="{{ Route('tag.create') }}" class="btn btn-outline-success">Cadastrar Tag</a>
 
   </main>
 </body>
