@@ -1,52 +1,45 @@
 @extends('layouts.store')
 
-@section('css')
-  <style>
-    .img-cart{
-      height: 65px;
-    }
-  </style>
-@endsection
-
 @section('content')
-  <h2>Carrinho de compra</h2>
-  <table class="table table-striped align-middle">
-    <thaed>
-      <tr>
-        <th>Produto</th>
-        <th></th>
-        <th>Quantidade</th>
-        <th></th>
-        <th>Preço</th>
-      </tr>
-    </thead>
-    <tbody>
+  <h2 class="mt-3 title-cart">Meu Carinho</h2>
+  <div class="row">
       @php
         $total = 0;
       @endphp
 
       @foreach($cart as $item)
-        <tr>
-          <td><img class="img-cart" src="{{ asset($item->product()->image) }}"></td>
-          <td><a href="{{ Route('product.show', $item->product()->id) }}">{{ $item->product()->name }}</td>
-          <td><span>{{ $item->quantity }}</span></td>
-          <td>
-            <a class="btn btn-lg btn-success" href="{{ Route('cart.add', $item->product()->id) }}">+</a>
-            <a class="btn btn-lg btn-danger" href="{{ Route('cart.remove', $item->product()->id) }}">-</a>
-          </td>
-          <td><span>R$ {{ number_format ($item->product()->price * $item->quantity, 2, ',' , '.') }}</span></td>
-        </tr>
-
-        @php
-        $total += $item->product()->price * $item->quantity;
-        @endphp
-
+        <div class="col-10 p-4 my-2 mx-auto product-card">
+          <div class="d-flex align-items-center">
+            <img class="img-cart" src="{{ asset($item->product()->image) }}">
+            <div class="d-flex flex-column ms-4">
+              <a class="mb-5 name-product" href="{{ Route('product.show', $item->product()->id) }}">{{ $item->product()->name }}</a>
+              <div>
+                <span class="value-item me-5">R$ {{ number_format ($item->product()->price * $item->quantity, 2, ',' , '.') }}</span>
+                <div class="add-product d-inline mt-3 ms-5">
+                  <a class="btn btn-add mb-1" href="{{ Route('cart.add', $item->product()->id) }}">+</a>
+                  <span class="quantity-item mx-2">{{ $item->quantity }}</span>
+                  <a class="btn btn-remove mb-1" href="{{ Route('cart.remove', $item->product()->id) }}">-</a>
+                </div>
+              </div>
+              @php
+              $total += $item->product()->price * $item->quantity;
+              @endphp
+            </div>
+          </div>
+        </div>
       @endforeach
-    </tbody>
-  </table>
 
-  <div class="text-end my-3">
-    <span class="h4 d-block">Total: {{ number_format($total, 2, ',' , '.' ) }}</span>
-    <a class="btn btn-lg bg-primary text-white" href="{{ Route('cart.payment') }}">Finalizar compra</a>
+  <div class="row">
+    <div class="col-10 mx-auto my-3">
+      <div class="d-flex">
+      <span class="h4 value-total">Valor: </span>
+      <span class="h4 ms-auto value-total-number">R$ {{ number_format($total, 2, ',' , '.' ) }}</span>
+      </div>
+
+      <div class="text-end mt-4">
+        <a class="btn btn-lg btn-finish" href="{{ Route('cart.payment') }}">Finalizar compra</a>
+      </div>
+
+    </div>
   </div>
 @endsection
