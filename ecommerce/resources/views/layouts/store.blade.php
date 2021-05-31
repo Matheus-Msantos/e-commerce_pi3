@@ -78,7 +78,7 @@
 
   </header>
 
-  <main class="container">
+  <main>
     @if(session()->has('success'))
       <div class="alert alert-success" role="alert">
         {{ session()->get('success') }}

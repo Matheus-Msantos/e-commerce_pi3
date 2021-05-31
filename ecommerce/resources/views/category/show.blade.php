@@ -1,11 +1,9 @@
 @extends('layouts.store')
 
-
-
 @section('content')
-  <section class= "banner d-flex justify-content-center align-items-center p-4 my-4">
+  <section class="banner-show d-flex justify-content-center align-items-center p-4 my-4">
     <div>
-      <span class= "title-category">MUDAS</span>
+      <span class= "h1 title-main title-banner-show ">{{ $category->name }}</span>
     </div>
   </section>
   <section class="my-4">
@@ -18,10 +16,10 @@
 
           <div class="text-center">
               <span class="d-block text-main text-product">{{ $product->name }}</span>
-              <span class="d-block text-main text-product">R$ {{ $product->price }}</span>
-            <div>
-              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-comprar"><i class="fas fa-cart-plus"></i></a>
-              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-comprar">Comprar</a>
+              <span class="d-block text-main text-price mt-2">R$ {{ $product->price }}</span>
+            <div class="mt-3">
+              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-comprar mx-1"><i class="fas fa-cart-plus fa-lg"></i></a>
+              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-comprar mx-1"><i class="far fa-eye fa-lg"></i></a>
             </div>
           </div>
         </div>
