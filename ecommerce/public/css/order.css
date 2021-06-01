@@ -1,0 +1,67 @@
+.img-order {
+  height: 270px;
+}
+
+.title-order{
+  color: #223263;
+  font-weight: 700
+}
+
+.btn-accordion {
+  font-weight: 600;
+  background: rgba(39, 89, 43, .5);
+  border-radius: 5px !important;
+  margin-top: 5px;
+}
+
+.btn-accordion:focus {
+  color: black;
+  font-weight: 600;
+  background: rgba(39, 89, 43, .7);
+  box-shadow: 0 0 0 0.25rem rgba(39, 89, 43, 0.2);
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+  font-weight: 600;
+  background: rgba(39, 89, 43, .7);
+  box-shadow: 0 0 0 0.25rem rgba(39, 89, 43, 0.2);
+}
+
+.bg-list {
+  padding: 20px;
+  background:  rgba(229, 229, 229, .5);
+}
+
+
+.name-item {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.name-item:hover {
+  color: rgba(242, 68, 5, 1);
+  text-decoration: underline;
+}
+
+.quantity-item {
+  font-weight: 500;
+}
+
+.value-item {
+  color: rgba(242, 68, 5, 1);
+  font-weight: 500;
+}
+
+.info-payment {
+  color: rgba(242, 68, 5, 1);
+  font-weight: 400;
+}
+
+.info {
+  color: black;
+  font-weight: 500;
+}
+
+
