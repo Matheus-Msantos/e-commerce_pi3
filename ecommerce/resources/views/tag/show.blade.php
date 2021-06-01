@@ -1,35 +1,28 @@
 @extends('layouts.store')
 
-@section('css')
-  <style>
-    .img-height{
-      height: 250px;
-    }
-  </style>
-@endsection
 
 @section('content')
-  <section class="my-4">
-    <div class="row">
-      <div class="text-center">
-        <h2>{{ $tag->name }}</h2>
-        <span class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint, velit.</span>
-      </div>
-    </div>
 
+  <section class="banner-hortas d-flex justify-content-center align-items-center p-4 my-4">
+    <div>
+      <span class= "h1 title-main title-banner-show">{{ $tag->name }}</span>
+    </div>
+  </section>
+
+  <section class="my-4">
     <div class="row">
       @foreach($products as $product)
         <div class="col-lg-4 col-md-6 col-sm-10">
           <div class="img-height text-center">
-            <img src="{{ asset($product->image) }}" class="h-100">
+            <img src="{{ asset($product->image) }}" class="img">
           </div>
 
           <div class="text-center">
-              <span class="d-block fw-bold">{{ $product->name }}</span>
-              <span class="d-block">R$ {{ $product->price }}</span>
-            <div>
-              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-primary">Visualizar</a>
-              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-primary">Adicionar ao carrinho</a>
+              <span class="d-block text-main text-product">{{ $product->name }}</span>
+              <span class="d-block text-main text-price mt-2">R$ {{ $product->price }}</span>
+            <div class="mt-3">
+              <a href="{{ Route('cart.add', $product->id) }}" class="btn btn-comprar mx-1"><i class="fas fa-cart-plus fa-lg"></i></a>
+              <a href="{{ Route('product.show', $product->id) }}" class="btn btn-comprar mx-1"><i class="far fa-eye fa-lg"></i></a>
             </div>
           </div>
         </div>

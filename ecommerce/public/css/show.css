@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.banner-mudas{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/mudas.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+
+.banner-semente{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/sementes.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+
+.banner-fertilizante{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/fertilizantes.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+
+.banner-suporte{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/acessorios-suportes.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+
+.banner-hortas{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/hortas-verticais.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+
+.banner-manutencao{
+  background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../../img/manutencao.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 2px;
+  background-attachment: fixed;
+}
+.title-banner-show {
+  color: #FEBA4F;
+  font-weight: 700;
+  font-size: 55px;
+  text-shadow: 2px 2px black;
+}
+
+.title-main {
+  font-family: Poppins;
+}
+
+.text-product {
+  color: #223263;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.text-price {
+  color: #F24405;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btn-comprar {
+  background: rgba(242, 68, 5, 0.7);
+  border-radius: 5px;
+  color: white;
+  box-shadow: inset 0 0 0 0px rgba(242, 68, 5, 0.7);
+}
+.btn-comprar:hover {
+  box-shadow: inset 0 100px 0 0px rgba(242, 68, 5, 0.7) ;
+  transition: 0.3s ease-in-out;
+}
+
+.img{
+  height: 250px;
+}
