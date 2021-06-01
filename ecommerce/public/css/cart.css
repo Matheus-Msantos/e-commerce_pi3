@@ -1,0 +1,75 @@
+.title-cart{
+  color: #223263;
+  font-weight: 700
+}
+
+.img-cart{
+  height: 120px;
+}
+
+.name-product {
+  color: #223263;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.name-product:hover {
+  color: rgba(242, 68, 5, .7);
+}
+
+.product-card {
+  border: 1px solid #EBF0FF;
+  border-radius: 5px;
+}
+
+.value-item {
+  color: rgba(242, 68, 5, 1);
+  font-weight: 700;
+}
+
+.btn-remove {
+  font-weight: bold;
+  background: white;
+}
+
+.btn-remove:hover {
+  color: white;
+  background: #dc3545;
+}
+
+.btn-add {
+  font-weight: bold;
+  background: white;
+}
+
+.btn-add:hover {
+  color: white;
+  background: #198754;
+
+}
+
+.add-product {
+  background: rgba(	235, 240, 255, 1);
+  padding: 12px 4px;
+  border-radius: 5px;
+}
+
+.value-total {
+  color: #223263;
+  font-weight: 700;
+}
+
+.value-total-number {
+  font-weight: 700;
+  color: rgba(242, 68, 5, 1);
+}
+
+.btn-finish {
+  background: rgba(242, 68, 5, .6);
+  font-weight: 500;
+}
+
+.btn-finish:hover {
+  color: white;
+  background: rgba(242, 68, 5, 1);
+}
