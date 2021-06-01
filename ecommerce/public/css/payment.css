@@ -1,0 +1,48 @@
+.title-payment{
+  color: #223263;
+  font-weight: 700
+}
+
+.border-orange {
+  border: 1px solid rgba(242, 68, 5, 0.6);
+  border-radius: 5px;
+}
+
+.btn-address {
+  font-weight: 500;
+  background:rgba(242, 68, 5, .6);
+}
+
+.btn-address:hover {
+  color: white;
+  background:rgba(242, 68, 5, 1);
+}
+
+.product-quantity {
+  color: black;
+  text-decoration: none;
+}
+
+.product-quantity:hover {
+  color: rgba(242, 68, 5, .7);
+  text-decoration: underline;
+}
+
+.text-value-payment {
+  color: rgba(34, 50, 99, .8);
+  font-weight: 600;
+}
+
+.total-number {
+  color: rgba(242, 68, 5, .8);
+  font-weight: 700;
+}
+
+.btn-finish-payment {
+  color: white;
+  background:rgba(242, 68, 5, 1);
+}
+
+.btn-finish-payment:hover {
+  background:rgba(242, 68, 5, .9);
+}
