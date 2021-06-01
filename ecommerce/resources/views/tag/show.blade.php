@@ -3,7 +3,7 @@
 
 @section('content')
 
-  <section class="banner-show d-flex justify-content-center align-items-center p-4 my-4">
+  <section class="banner-hortas d-flex justify-content-center align-items-center p-4 my-4">
     <div>
       <span class= "h1 title-main title-banner-show">{{ $tag->name }}</span>
     </div>
