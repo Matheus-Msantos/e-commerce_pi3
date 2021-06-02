@@ -12,6 +12,28 @@ header {
   text-align: end;
 }
 
+.login {
+  color: white;
+}
+
+.login:hover {
+  color: black;
+}
+
+.dropdown-toggle {
+  padding: 6px 0px;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 5px;
+}
+
+.dropdown-toggle:hover {
+  color: white;
+  background: rgba(242, 68, 5, 0.7);
+  border-radius: 5px;
+}
+
 .btn-logout {
   color: white;
   background: none;

@@ -11,6 +11,14 @@
   <link rel="stylesheet" type="text/css" href="css/menu.css">
   <link rel="stylesheet" type="text/css" href="../../css/menu.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
+  <link rel="stylesheet" type="text/css" href="../../css/home.css">
+  <link rel="stylesheet" type="text/css" href="../../css/admin.css">
+  <link rel="stylesheet" type="text/css" href="../../css/cart.css">
+  <link rel="stylesheet" type="text/css" href="../../css/order.css">
+  <link rel="stylesheet" type="text/css" href="../../css/show.css">
+  <link rel="stylesheet" type="text/css" href="../../css/show-product.css">
+  <link rel="stylesheet" type="text/css" href="../../css/payment.css">
+  <link rel="stylesheet" type="text/css" href="../../css/login.css">
 
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -29,46 +37,35 @@
         </button>
 
         <div id="menuInfo" class="collapse navbar-collapse ms-5">
-          <ul class="navbar-nav text-white">
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle text-white" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
-              <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
-                @foreach(App\Models\Category::all() as $category)
-                  <li>
-                    <a class="dropdown-item" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
-                  </li>
-                @endforeach
-              </ul>
+          <ul class="navbar-nav">
+            <li>
+              <a class="nav-link menu-secundary" href="{{ url('/') }}">Home</a>
             </li>
-            <li class="nav-item dropdown">
-              <a href="#" class="nav-link dropdown-toggle text-white" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Filtros </a>
-              <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
-                @foreach(App\Models\Tag::all() as $tag)
-                  <li>
-                    <a class="dropdown-item" href="{{ Route('tag.show', $tag->id) }}">{{ $tag->name }}</a>
-                  </li>
-                  @endforeach
-              </ul>
+          @foreach(App\Models\Category::all()->take(4) as $category)
+            <li class="nav-item">
+              <a class="nav-link menu-secundary mx-2" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
             </li>
+          @endforeach
           </ul>
+
           <div class="navbar-nav margin-account ms-auto">
             <div class="d-flex">
             @if(Auth()->user())
-            <div class="nav-item dropdown">
+            <div class="nav-item dropdown align-middle mx-2">
                     <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
                     <div class="dropdown-menu" aria-labelledby="userDropDown">
-                      <a class="dropdown-item">Pedidos</a>
-                      <a href="{{ Route('product.index') }}" class="dropdown-item">Area do Admin</a>
+                      <a class="dropdown-item" href="{{ Route('order.show') }}">Lista de compras</a>
+                      <a class="dropdown-item" href="{{ Route('product.index') }}">Area do Admin</a>
                     </div>
                   </div>
-              <a class="nav-link ms-2 login" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+              <a class="nav-link mx-2 login" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart fa-lg"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
               <form action="{{ Route('logout') }}" method="POST" class="d-flex">
                 @csrf
-                <button class="btn-logout login" type="submit"><i class="fas fa-door-open"></i> Sair</button>
+                <button class="btn-logout login mx-2" type="submit"><i class="fas fa-door-open fa-lg"></i> Sair</button>
               </form>
             @else
-              <a class="login"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
-              <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
+              <a class="login mx-3"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt fa-lg"></i> Entrar </a>
+              <a class="login mx-3" href="{{ Route('register') }}"> <i class="far fa-user fa-lg"></i> Registrar</a>
             @endif
             </div>
           </div>
@@ -95,7 +92,7 @@
 
   </main>
 
-  <footer class="container footer text-white py-5">
+  <footer class="footer text-white py-5">
     <div class="row">
 
     <div class="col-sm-10 col-md-4  mx-auto text-center">

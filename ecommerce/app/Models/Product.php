@@ -24,4 +24,12 @@ class Product extends Model
   public static function destaques() {
     return Product::all()->take(3);
   }
+
+  public static function novidades() {
+    return Product::all()->take(6);
+  }
+
+  public static function especial() {
+    return Product::all()->take(-5);
+  }
 }

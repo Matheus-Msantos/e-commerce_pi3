@@ -39,12 +39,41 @@
   </section>
   @endif
 
-  <section class="my-4">
+  <div class="container">
+    <nav class="navbar navbar-expand-sm mx-4 mt-4">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle mx-2" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
+            @foreach(App\Models\Category::all() as $category)
+              <li>
+                <a class="dropdown-item" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
+              </li>
+            @endforeach
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle mx-2" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Filtros </a>
+          <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
+            @foreach(App\Models\Tag::all() as $tag)
+              <li>
+                <a class="dropdown-item" href="{{ Route('tag.show', $tag->id) }}">{{ $tag->name }}</a>
+              </li>
+            @endforeach
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+
+  <section class="my-4 container">
     <div class="row">
       @foreach($products as $product)
-        <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="col-lg-4 col-md-6 col-sm-10 my-3">
           <div class="img-height text-center">
-            <img src="{{ asset($product->image) }}" class="img">
+            <img src="{{ asset($product->image) }}" class="img-show">
           </div>
 
           <div class="text-center">

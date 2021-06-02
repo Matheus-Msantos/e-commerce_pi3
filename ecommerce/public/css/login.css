@@ -1,5 +1,9 @@
-.img-logo {
-  width: 100px;
+.img-logo-login {
+  width: 200px;
   border-radius: 50%;
  text-align: center;
+}
+
+.bg-green {
+  background: #27592B;
 }

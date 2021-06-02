@@ -28,8 +28,8 @@
 }
 
 
-.img {
-  height: 250px;
+.img-home{
+  height: 200px;
 }
 
 #banner {
@@ -90,7 +90,3 @@
   box-shadow: inset 400px 0 0 0px rgba(242, 68, 5, 0.7) ;
   transition: 0.5s ease-in-out;
 }
-
-
-
-

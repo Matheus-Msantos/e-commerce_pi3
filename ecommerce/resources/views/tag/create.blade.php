@@ -61,28 +61,26 @@
             </li>
           </ul>
           <div class="ms-auto navbar-nav">
-              <div class="d-flex">
-                @if(Auth()->user())
-                  <div class="nav-item dropdown">
-                    <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
-                    <div class="dropdown-menu" aria-labelledby="userDropDown">
-                      <a class="dropdown-item">Pedidos</a>
-                      <a class="dropdown-item">Area do Admin</a>
+            <div class="d-flex">
+              @if(Auth()->user())
+                <div class="nav-item dropdown align-middle mx-2">
+                  <span class="nav-link dropdown-toggle text-white px-3" id="userDropDown" data-bs-toggle="dropdown" role="button"><i class="fas fa-user-circle"></i> {{ Auth()->user()->name }}</span>
+                  <div class="dropdown-menu" aria-labelledby="userDropDown">
+                    <a class="dropdown-item" href="{{ Route('order.show') }}">Lista de compras</a>
+                    <a class="dropdown-item" href="{{ Route('product.index') }}">Area do Admin</a>
                     </div>
-                  </div>
-
-                  <a class="nav-link text-white px-3" class="text-muted" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart"></i>
-                  <span class="count">({{ \App\Models\Cart::count() }})</span></a>
-                  <form action="{{ Route('logout') }}" method="POST" class="d-flex">
-                    @csrf
-                    <button class="px-3 btn-logout" type="submit">sair</button>
-                  </form>
-                @else
-                  <a class="text-white"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt"></i> Entrar </a>
-                  <a class="text-white ms-3" href="{{ Route('register') }}"> <i class="far fa-user"></i> Registrar</a>
-                @endif
-              </div>
+                </div>
+                  <a class="nav-link mx-2 login" href="{{ Route('cart.show') }}"><i class="fas fa-shopping-cart fa-lg"></i> <span class="count">({{ \App\Models\Cart::count() }})</span></a>
+                <form action="{{ Route('logout') }}" method="POST" class="d-flex">
+                  @csrf
+                  <button class="btn-logout login mx-2" type="submit"><i class="fas fa-door-open fa-lg"></i> Sair</button>
+                </form>
+              @else
+                <a class="login mx-3"  href="{{ Route('login') }}" ><i class="fas fa-sign-in-alt fa-lg"></i> Entrar </a>
+                <a class="login mx-3" href="{{ Route('register') }}"> <i class="far fa-user fa-lg"></i> Registrar</a>
+              @endif
             </div>
+          </div>
         </div>
       </div>
     </nav>

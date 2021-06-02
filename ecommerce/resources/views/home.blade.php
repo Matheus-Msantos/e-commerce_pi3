@@ -3,20 +3,32 @@
 @endsection
 
 @section('content')
-
-  <nav>
-    <div class= "title-main">
-      <div class= " navbar navbar-expand-lg col-5 ms-auto mt-2 f-bold">
-        <ul class="navbar-nav">
-          @foreach(App\Models\Category::all()->take(4) as $category)
-            <li>
-              <a class="nav-link menu-secundary mx-2" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
+<div class="container">
+<nav class="navbar navbar-expand-sm mx-4 mt-4">
+  <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle mx-2" id="menuDropDownCategoria" data-bs-toggle="dropdown" role="button"> Categorias </a>
+              <ul class="dropdown-menu" aria-labelledby="menuDropDownCategoria">
+                @foreach(App\Models\Category::all() as $category)
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('category.show', $category->id) }}">{{ $category->name }}</a>
+                  </li>
+                @endforeach
+              </ul>
             </li>
-          @endforeach
-        </ul>
-      <div>
-    </div>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle mx-2" id="menuDropDownTag" data-bs-toggle="dropdown" role="button"> Filtros </a>
+              <ul class="dropdown-menu" aria-labelledby="menuDropDownTag">
+                @foreach(App\Models\Tag::all() as $tag)
+                  <li>
+                    <a class="dropdown-item" href="{{ Route('tag.show', $tag->id) }}">{{ $tag->name }}</a>
+                  </li>
+                  @endforeach
+              </ul>
+            </li>
+    </ul>
   </nav>
+</div>
 
   <section id="banner" class="d-flex justify-content-end align-items-center p-4 my-4">
     <div>
@@ -24,7 +36,7 @@
     </div>
   </section>
 
-  <section class="my-4">
+  <section class="p-4 my-4 container">
     <div class="row">
       <div class="text-center my-3">
         <h2 class= "title-main title-product">Queridinhos</h2>
@@ -34,9 +46,9 @@
 
     <div class="row">
       @foreach(App\Models\Product::destaques() as $product)
-        <div class="col-lg-4 col-md-6 col-sm-10">
+        <div class="col-lg-4 col-md-6 col-sm-10 my-3">
           <div class="img-height text-center">
-            <img src="{{ asset($product->image) }}" class="img">
+            <img src="{{ asset($product->image) }}" class="img-home">
           </div>
 
           <div class="text-center">
@@ -50,8 +62,11 @@
         </div>
       @endforeach
     </div>
+  </section>
 
-    <div class="bg-light p-4 mt-4">
+  <section class="bg-light p-4 my-4 container">
+
+    <div>
       <div class="row">
         <div class="text-center">
           <h2 class= "title-main title-product h1 my-5">Novidades</h2>
@@ -59,10 +74,10 @@
       </div>
 
       <div class="row">
-        @foreach(App\Models\Product::destaques() as $product)
-          <div class="col-lg-4 col-md-6 col-sm-10">
+        @foreach(App\Models\Product::novidades() as $product)
+          <div class="col-lg-4 col-md-6 col-sm-10 my-3">
             <div class="img-height text-center">
-              <img src="{{ asset($product->image) }}" class="img">
+              <img src="{{ asset($product->image) }}" class="img-home">
             </div>
 
             <div class="text-center ">
@@ -76,6 +91,7 @@
         </div>
       @endforeach
     </div>
+
   </section>
 
   <section id="banner-especial-cozinhas" class="d-flex justify-content-end align-items-center p-4 ">
@@ -84,12 +100,12 @@
     </div>
   </section>
 
-  <section>
+  <section class="p-4 my-4 container">
     <div class="row my-4">
-      @foreach(App\Models\Product::destaques() as $product)
-        <div class="col-lg-4 col-md-6 col-sm-10">
+      @foreach(App\Models\Product::especial() as $product)
+        <div class="col-lg-4 col-md-6 col-sm-10 my-3">
           <div class="img-height text-center">
-            <img src="{{ asset($product->image) }}" class="img img-fluid">
+            <img src="{{ asset($product->image) }}" class="img-home">
           </div>
 
           <div class="text-center ">
