@@ -23,7 +23,7 @@ class AddressesController extends Controller
       'cep' => $request->cep,
     ]);
     session()->flash('success', 'Endereço salvado com sucesso!');
-    return redirect(Route('address.create'));
+    return redirect(Route('cart.payment'));
   }
 
   public function edit(Address $address) {

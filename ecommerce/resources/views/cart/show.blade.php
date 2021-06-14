@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="my-4 container">
-    <h2 class="mt-3 title-cart">Meu Carinho</h2>
+    <h2 class="mt-3 title-cart">Meu Carrinho</h2>
     <div class="row">
         @php
           $total = 0;
@@ -38,7 +38,7 @@
         </div>
 
         <div class="text-end mt-4">
-          <a class="btn btn-lg btn-finish" href="{{ Route('cart.payment') }}">Finalizar compra</a>
+          <a class="btn btn-lg btn-finish" href="{{ Route('address.create') }}">Finalizar compra</a>
         </div>
 
       </div>

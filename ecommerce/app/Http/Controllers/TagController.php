@@ -49,7 +49,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
       if($tag->products->count() > 0){
-        session()->flash('success', 'Essa Tag não pode ser apagada!');
+        session()->flash('error', 'Erro ao apagar! Desvincule todos produtos relacionado a esse filtro');
         return redirect(Route('tag.index'));
       }
       $tag->delete();

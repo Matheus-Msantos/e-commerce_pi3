@@ -16,7 +16,7 @@
       <div class="col-md-5 col-10 mx-1 p-5 my-3 border-orange">
         <h3 class="title-payment">Resumo de Compras</h3>
         <div class="mt-3">
-          <span>Quantidade de produto comprados:</span>
+          <span>Quantidade de produto(s):</span>
           <a class="float-end product-quantity" href="{{ Route('cart.show') }}"> {{ \App\Models\Cart::count() }} Produto(s)</a>
         </div>
         <div class=" mt-3">

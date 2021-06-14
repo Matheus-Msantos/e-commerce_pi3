@@ -30,6 +30,12 @@
       </div>
     @endif
 
+    @if(session()->has('error'))
+      <div class="alert alert-danger" role="alert">
+        {{ session()->get('error') }}
+      </div>
+    @endif
+
     <div class="row">
       <table class="table table-striped text-center align-middle">
         <thead class="table-success">
